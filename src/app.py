@@ -142,4 +142,5 @@ async def root():
 if __name__ == "__main__":
     import uvicorn
     log_event("info", "app_startup", message="Wishilience starting...")
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # Binding to 0.0.0.0 is required for containerized apps to accept external traffic
+    uvicorn.run(app, host="0.0.0.0", port=8000)  # nosec B104

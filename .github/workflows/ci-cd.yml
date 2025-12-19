@@ -45,21 +45,47 @@ jobs:
           python-version: '3.11'
       
       - name: Install Bandit
-        run: pip install bandit
-      
-      - name: Run Bandit
+        run: pip install bandit bandit-sarif-formatter
+
+      - name: Run Bandit (JSON format)
         run: bandit -r src/ -f json -o bandit-report.json || true
-      
+
       - name: Display Bandit results
         run: cat bandit-report.json
-      
-      - name: Run Trivy vulnerability scanner
+
+      - name: Run Bandit (SARIF format)
+        run: bandit -r src/ -f sarif -o bandit-results.sarif || true
+
+      - name: Upload Bandit results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v4
+        if: always()
+        with:
+          sarif_file: 'bandit-results.sarif'
+          category: 'bandit'
+
+      - name: Run Trivy vulnerability scanner (Table format)
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
           scan-ref: '.'
           format: 'table'
           exit-code: '0'
+
+      - name: Run Trivy vulnerability scanner (SARIF format)
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          exit-code: '0'
+
+      - name: Upload Trivy results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v4
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+          category: 'trivy'
 
   build-and-push:
     name: Build & Push Docker Image
