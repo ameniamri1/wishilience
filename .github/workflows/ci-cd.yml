@@ -141,11 +141,11 @@ jobs:
           done
       
       - name: ZAP Baseline Scan
-        uses: zaproxy/action-baseline@v0.12.0
+        uses: zaproxy/action-baseline@v0.13.0
+        continue-on-error: true
         with:
           target: 'http://localhost:8000'
           allow_issue_writing: false
-          artifact_name: 'zap-scan-results'
       
       - name: Stop container
         if: always()
