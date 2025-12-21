@@ -360,7 +360,7 @@ MIT License - see [LICENSE](LICENSE) file
 
 **Your Name**  
 📧 your.email@example.com  
-🔗 [GitHub](https://github.com/YOUR_USERNAME) | [LinkedIn](https://linkedin.com/in/YOUR_USERNAME)
+🔗 [GitHub](https://github.com/ameniamri1) | [LinkedIn](https://www.linkedin.com/in/ameni-amri-517a53283/)
 
 ---
 
