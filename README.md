@@ -359,7 +359,7 @@ MIT License - see [LICENSE](LICENSE) file
 ## 👤 Author
 
 **Your Name**  
-📧 your.email@example.com  
+📧 amriameni522@gmail.com  
 🔗 [GitHub](https://github.com/ameniamri1) | [LinkedIn](https://www.linkedin.com/in/ameni-amri-517a53283/)
 
 ---
